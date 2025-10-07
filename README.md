@@ -2,6 +2,12 @@
 
 Aplicación fullstack para la gestión de movimientos financieros (ingresos y egresos), administración de usuarios y generación de reportes.
 
+## 🔗 Enlaces
+
+- **Aplicación en producción:** [https://prueba-tecnica-prevalentware-omega.vercel.app](https://prueba-tecnica-prevalentware-omega.vercel.app)
+- **Documentación API (Swagger):** [https://prueba-tecnica-prevalentware-omega.vercel.app/api-docs](https://prueba-tecnica-prevalentware-omega.vercel.app/api-docs)
+- **Repositorio GitHub:** [https://github.com/PaolaTrejos/prueba-tecnica-prevalentware](https://github.com/PaolaTrejos/prueba-tecnica-prevalentware)
+
 ## Requisitos Previos
 
 - Node.js 20.17.0 o superior
@@ -98,8 +104,8 @@ GITHUB_CLIENT_SECRET=[TU_CLIENT_SECRET]
 ### Paso 4: Actualizar GitHub OAuth App
 
 Después de obtener la URL de Vercel, actualiza tu GitHub OAuth App:
-- Homepage URL: `https://[TU_APP].vercel.app`
-- Callback URL: `https://[TU_APP].vercel.app/api/auth/callback/github`
+- Homepage URL: `https://tu-app.vercel.app` (ej: `https://prueba-tecnica-prevalentware-omega.vercel.app`)
+- Callback URL: `https://tu-app.vercel.app/api/auth/callback/github` (ej: `https://prueba-tecnica-prevalentware-omega.vercel.app/api/auth/callback/github`)
 
 ### Paso 5: Deploy
 

@@ -13,7 +13,7 @@ const swaggerDefinition = {
             description: 'Servidor de desarrollo',
         },
         {
-            url: 'https://tu-app.vercel.app',
+            url: 'https://prueba-tecnica-prevalentware-omega.vercel.app',
             description: 'Servidor de producción',
         },
     ],
