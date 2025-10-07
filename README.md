@@ -1,4 +1,133 @@
-## Prueba Técnica para Desarrollador Fullstack
+# Sistema de Gestión de Ingresos y Egresos
+
+Aplicación fullstack para la gestión de movimientos financieros (ingresos y egresos), administración de usuarios y generación de reportes.
+
+## Requisitos Previos
+
+- Node.js 20.17.0 o superior
+- npm 10.8.2 o superior
+- Cuenta en [Supabase](https://supabase.com)
+- GitHub OAuth App
+
+## Instalación y Ejecución Local
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/PaolaTrejos/prueba-tecnica-prevalentware.git
+cd prueba-tecnica-fullstack
+```
+
+### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3. Configurar variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+
+```env
+# Database - Supabase
+DATABASE_URL="postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:5432/postgres"
+
+# Better Auth
+BETTER_AUTH_SECRET="[GENERA_UN_STRING_ALEATORIO]"
+BETTER_AUTH_URL="http://localhost:3000"
+NEXT_PUBLIC_BETTER_AUTH_URL="http://localhost:3000"
+
+# GitHub OAuth
+GITHUB_CLIENT_ID="[TU_GITHUB_CLIENT_ID]"
+GITHUB_CLIENT_SECRET="[TU_GITHUB_CLIENT_SECRET]"
+```
+
+**Para obtener las credenciales:**
+
+- **Supabase:** Crea un proyecto en [supabase.com](https://supabase.com) y copia las URLs de conexión desde Settings > Database
+- **GitHub OAuth:** Crea una OAuth App en [GitHub Settings > Developer Settings](https://github.com/settings/developers)
+  - Homepage URL: `http://localhost:3000`
+  - Callback URL: `http://localhost:3000/api/auth/callback/github`
+- **BETTER_AUTH_SECRET:** Genera uno con: `node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"`
+
+### 4. Configurar la base de datos
+
+```bash
+# Aplicar migraciones
+npx prisma migrate deploy
+
+# Generar cliente de Prisma
+npx prisma generate
+```
+
+### 5. Ejecutar el proyecto
+
+```bash
+npm run dev
+```
+
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+## Despliegue en Vercel
+
+### Paso 1: Preparar el repositorio
+
+Asegúrate de que todo el código esté commiteado en GitHub.
+
+### Paso 2: Importar en Vercel
+
+1. Ve a [vercel.com](https://vercel.com) e inicia sesión
+2. Clic en **Add New Project**
+3. Importa tu repositorio de GitHub
+
+### Paso 3: Configurar variables de entorno
+
+En la configuración del proyecto en Vercel, agrega las siguientes variables de entorno:
+
+```env
+DATABASE_URL=postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true
+DIRECT_URL=postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:5432/postgres
+BETTER_AUTH_SECRET=[TU_SECRET]
+BETTER_AUTH_URL=https://[TU_APP].vercel.app
+NEXT_PUBLIC_BETTER_AUTH_URL=https://[TU_APP].vercel.app
+GITHUB_CLIENT_ID=[TU_CLIENT_ID]
+GITHUB_CLIENT_SECRET=[TU_CLIENT_SECRET]
+```
+
+### Paso 4: Actualizar GitHub OAuth App
+
+Después de obtener la URL de Vercel, actualiza tu GitHub OAuth App:
+- Homepage URL: `https://[TU_APP].vercel.app`
+- Callback URL: `https://[TU_APP].vercel.app/api/auth/callback/github`
+
+### Paso 5: Deploy
+
+Clic en **Deploy** y espera a que se complete el despliegue.
+
+
+## Scripts Disponibles
+
+```bash
+npm run dev          # Servidor de desarrollo
+npm run build        # Compilar para producción
+npm start            # Servidor de producción
+npm test             # Ejecutar tests
+```
+
+## Tecnologías Utilizadas
+
+- Next.js 15.1.3 (Pages Router)
+- TypeScript 5.7.2
+- Prisma 6.2.1 + PostgreSQL (Supabase)
+- Better Auth 1.1.1
+- Tailwind CSS + Shadcn UI
+- Recharts 3.2.1
+- Jest + React Testing Library
+
+---
+
+## Prueba Técnica - Requisitos Originales
 
 ### Introducción
 
